@@ -16,11 +16,20 @@ body {
     margin-left: 20px;
     z-index: 10;
     font-family: 'Courier New', Courier, monospace;
-    background-color:antiquewhite;
+    background-color: antiquewhite;
 }
 
 .title {
     font-weight: bold;
 }
 
-.description
+.mapboxgl-popup-close-button {
+    display: none;
+}
+
+.mapboxgl-popup-content {
+    font: 400 15px/22px 'Courier New', Courier, monospace;
+    padding: 10;
+    width: 180px;
+    background-color: antiquewhite;
+}
