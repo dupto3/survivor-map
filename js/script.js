@@ -5,7 +5,7 @@ const survivorData = [
         "season": 1,
         "name": "Borneo",
         "airdate": 2000,
-        "location": "Sabah, Malaysia",
+        "location": "Sabah, Malaysia",
         "longitude": 115.65052794636486,
         "latitude": 5.7273153854304235
     },
@@ -14,8 +14,8 @@ const survivorData = [
         "name": "The Australian Outback",
         "airdate": 2001,
         "location": "Queensland, Australia",
-        "longitude": 150.15693,
-        "latitude": -17.78921
+        "longitude": 145.36498335315687,
+        "latitude": -18.233278090841523
     },
     {
         "season": 3,
@@ -46,32 +46,32 @@ const survivorData = [
         "name": "The Amazon",
         "airdate": 2003,
         "location": "Amazonas, Brazil",
-        "longitude": -64.93544,
-        "latitude": -3.81483
+        "longitude": -60.50317452288626,
+        "latitude": -3.091027433492709
     },
     {
         "season": 7,
         "name": "Pearl Islands",
         "airdate": 2003,
         "location": "Pearl Islands, Panama",
-        "longitude": -79.01307786,
-        "latitude": 8.483399518
+        "longitude": -79.02277891382197,
+        "latitude": 8.571453546419367
     },
     {
         "season": 8,
         "name": "All-Stars",
         "airdate": 2004,
         "location": "Pearl Islands, Panama",
-        "longitude": -79.01307786,
-        "latitude": 8.483399518
+        "longitude": -79.02277891382197,
+        "latitude": 8.571453546419367
     },
     {
         "season": 9,
         "name": "Vanuatu",
         "airdate": 2004,
         "location": "Shefa, Vanuatu",
-        "longitude": 168.38783,
-        "latitude": -17.21685
+        "longitude": 168.18304911103252,
+        "latitude": -17.65439723577704
     },
     {
         "season": 10,
@@ -94,8 +94,8 @@ const survivorData = [
         "name": "Panama",
         "airdate": 2006,
         "location": "Pearl Islands, Panama",
-        "longitude": -79.01307786,
-        "latitude": 8.483399518
+        "longitude": -79.02277891382197,
+        "latitude": 8.571453546419367
     },
     {
         "season": 13,
@@ -246,8 +246,8 @@ const survivorData = [
         "name": "Cambodia",
         "airdate": 2015,
         "location": "Koh Rong, Cambodia",
-        "longitude": 10.64956425,
-        "latitude": 103.3233148
+        "longitude": 103.3233148,
+        "latitude": 10.64956425
     },
     {
         "season": 32,
@@ -272,11 +272,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidXB0b24zMyIsImEiOiJjbGdjZGYxZjUwMW52M2xwY2tqb
 const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-streets-v12',
-    center: [115.65052794636486, 5.7273153854304235],
+    center: [115.65052794636486, 8.7273153854304235],
     zoom: 3,
     projection: 'globe',
     pitch: 10
 });
+
 
 map.on('style.load', () => {
     // Custom atmosphere styling
@@ -288,17 +289,17 @@ map.on('style.load', () => {
         'star-intensity': 0.2 // Background star brightness (default 0.35 at low zoooms )
 
     });
-     
+
     map.addSource('mapbox-dem', {
-    'type': 'raster-dem',
-    'url': 'mapbox://mapbox.terrain-rgb'
+        'type': 'raster-dem',
+        'url': 'mapbox://mapbox.terrain-rgb'
     });
-     
+
     map.setTerrain({
-    'source': 'mapbox-dem',
-    'exaggeration': 3
+        'source': 'mapbox-dem',
+        'exaggeration': 1
     });
-    });
+});
 
 
 
@@ -307,30 +308,97 @@ survivorData.forEach(function (survivorSeasons) {
     const popup = new mapboxgl.Popup({
         offset: 25
     })
-    .setText(
-        `Survivor Season ${survivorSeasons.season}: ${survivorSeasons.name} aired in ${survivorSeasons.airdate} and was filmed in ${survivorSeasons.location}.`
-    )
+        .setText(
+            `Survivor Season ${survivorSeasons.season}: ${survivorSeasons.name} aired in ${survivorSeasons.airdate} and was filmed in ${survivorSeasons.location}.`
+        )
 
-//marker color based on season
-// let color = '#fff'
-// if (survivorSeasons.season < 11) {
-//     color = '#ff7e47'
-// }
-
-// if (survivorSeasons.season > 10 && survivorSeasons.season < 21) {
-//     color = '#fc7135'
-// }
-
-// if (survivorSeasons.season > 20) {
-//     color = '#ff4d00'
-// }
-
-//create marker
-new mapboxgl.Marker({
-    color: '#ff4d00'
+    //create marker
+    new mapboxgl.Marker({
+        color: '#ff4d00'
+    })
+        .setLngLat([survivorSeasons.longitude, survivorSeasons.latitude])
+        .setPopup(popup)
+        .addTo(map);
 })
-    .setLngLat([survivorSeasons.longitude, survivorSeasons.latitude])
-    .setPopup(popup)
-    .addTo(map);
-}
-)
+
+//buttons
+
+$('#button-1').on('click', function() {
+    map.flyTo({
+        center: [115.65052794636486, 5.7273153854304235],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-2').on('click', function() {
+    map.flyTo({
+        center: [145.36498335315687, -18.233278090841523],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-3').on('click', function() {
+    map.flyTo({
+        center: [37.83004632, 0.641029035],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-4').on('click', function() {
+    map.flyTo({
+        center: [-140.1661321459181, -8.948080063918024],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-5').on('click', function() {
+    map.flyTo({
+        center: [99.87508, 6.4676],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-6').on('click', function() {
+    map.flyTo({
+        center: [-60.50317452288626, -3.091027433492709],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-7').on('click', function() {
+    map.flyTo({
+        center: [-79.02277891382197, 8.571453546419367],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-8').on('click', function() {
+    map.flyTo({
+        center: [-79.02277891382197, 8.571453546419367],
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-9').on('click', function() {
+    map.flyTo({
+        center: [168.18304911103252, -17.65439723577704], 
+        zoom: 13,
+        pitch: 60
+    })
+})
+
+$('#button-10').on('click', function() {
+    map.flyTo({
+        center: [134.34127, 7.25032],
+        zoom: 13,
+        pitch: 60
+    })
+})

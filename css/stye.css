@@ -11,12 +11,14 @@ body {
 }
 
 .sidebar {
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 20px;
+    position: relative;
+    width: 41%;
+    margin: 10px;
     z-index: 10;
     font-family: 'Courier New', Courier, monospace;
     background-color: antiquewhite;
+    border-radius: 3px;
+    padding: 5px;
 }
 
 .title {
@@ -32,4 +34,22 @@ body {
     padding: 10;
     width: 180px;
     background-color: antiquewhite;
+}
+
+button {
+    display: block;
+    position: relative;
+    width: 10%;
+    height: 30px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    font-size: 13px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: black;
+    background: antiquewhite;
+    margin-top: 10px;
+    margin-left: 10px;
+    opacity: 50;
 }
