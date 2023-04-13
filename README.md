@@ -1,0 +1,1 @@
+This map of filming locations for the CBS show **Survivor** was created as an assignment for my NYU Web Mapping course.
