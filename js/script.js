@@ -30,8 +30,8 @@ const survivorData = [
         "name": "Marquesas",
         "airdate": 2002,
         "location": "Marquesas Islands, French Polynesia",
-        "longitude": -139.67399,
-        "latitude": -9.25304
+        "longitude": -140.1661321459181,
+        "latitude": -8.948080063918024
     },
     {
         "season": 5,
@@ -150,48 +150,48 @@ const survivorData = [
         "name": "Samoa",
         "airdate": 2009,
         "location": "Upolu, Samoa",
-        "longitude": -172.1804863,
-        "latitude": -13.80980668
+        "longitude": -171.93168128122647,
+        "latitude": -13.989566325848523
     },
     {
         "season": 20,
         "name": "Heroes vs Villains",
         "airdate": 2010,
         "location": "Upolu, Samoa",
-        "longitude": -172.1804863,
-        "latitude": -13.80980668
+        "longitude": -171.93168128122647,
+        "latitude": -13.989566325848523
     },
     {
         "season": 21,
         "name": "Nicaragua",
         "airdate": 2010,
         "location": "San Juan Del Sur, Nicaragua",
-        "longitude": 11.18141313,
-        "latitude": -85.82478985
+        "longitude": -85.90118789329536,
+        "latitude": 11.277621342387505
     },
     {
         "season": 22,
         "name": "Redemption Island",
         "airdate": 2011,
         "location": "San Juan Del Sur, Nicaragua",
-        "longitude": 11.68141313,
-        "latitude": -85.32478985
+        "longitude": -85.90118789329536,
+        "latitude": 11.277621342387505
     },
     {
         "season": 23,
         "name": "South Pacific",
         "airdate": 2011,
         "location": "Upolu, Samoa",
-        "longitude": -172.1804863,
-        "latitude": -13.80980668
+        "longitude": -171.93168128122647,
+        "latitude": -13.989566325848523
     },
     {
         "season": 24,
         "name": "One World",
         "airdate": 2012,
         "location": "Upolu, Samoa",
-        "longitude": -172.1804863,
-        "latitude": -13.80980668
+        "longitude": -171.93168128122647,
+        "latitude": -13.989566325848523
     },
     {
         "season": 25,
@@ -230,24 +230,24 @@ const survivorData = [
         "name": "San Juan Del Sur",
         "airdate": 2014,
         "location": "San Juan Del Sur, Nicaragua",
-        "longitude": 11.18141313,
-        "latitude": -85.82478985
+        "longitude": -85.90118789329536,
+        "latitude": 11.277621342387505
     },
     {
         "season": 30,
         "name": "Worlds Apart",
         "airdate": 2015,
         "location": "San Juan Del Sur, Nicaragua",
-        "longitude": 11.68141313,
-        "latitude": -85.32478985
+        "longitude": -85.90118789329536,
+        "latitude": 11.277621342387505
     },
     {
         "season": 31,
         "name": "Cambodia",
         "airdate": 2015,
         "location": "Koh Rong, Cambodia",
-        "longitude": 103.3233148,
-        "latitude": 10.64956425
+        "longitude": 10.64956425,
+        "latitude": 103.3233148
     },
     {
         "season": 32,
@@ -271,11 +271,36 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidXB0b24zMyIsImEiOiJjbGdjZGYxZjUwMW52M2xwY2tqb
 
 const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/satellite-v9',
-    center: [177.1325205, -17.62737732],
+    style: 'mapbox://styles/mapbox/satellite-streets-v12',
+    center: [115.65052794636486, 5.7273153854304235],
     zoom: 3,
     projection: 'globe',
+    pitch: 10
 });
+
+map.on('style.load', () => {
+    // Custom atmosphere styling
+    map.setFog({
+        color: 'rgb(186, 210, 235)', // Lower atmosphere
+        'high-color': 'rgb(36, 92, 223)', // Upper atmosphere
+        'horizon-blend': 0.02, // Atmosphere thickness (default 0.2 at low zooms)
+        'space-color': 'rgb(11, 11, 25)', // Background color
+        'star-intensity': 0.2 // Background star brightness (default 0.35 at low zoooms )
+
+    });
+     
+    map.addSource('mapbox-dem', {
+    'type': 'raster-dem',
+    'url': 'mapbox://mapbox.terrain-rgb'
+    });
+     
+    map.setTerrain({
+    'source': 'mapbox-dem',
+    'exaggeration': 3
+    });
+    });
+
+
 
 survivorData.forEach(function (survivorSeasons) {
     //create pop-up
