@@ -38,8 +38,8 @@ const survivorData = [
         "name": "Thailand",
         "airdate": 2002,
         "location": "Satun Province, Thailand",
-        "longitude": 99.87508,
-        "latitude": 6.4676
+        "longitude": 99.6684514533577,
+        "latitude": 6.7012891202407925
     },
     {
         "season": 6,
@@ -323,7 +323,7 @@ survivorData.forEach(function (survivorSeasons) {
 
 //buttons
 
-$('#button-1').on('click', function() {
+$('#button-1').on('click', function () {
     map.flyTo({
         center: [115.65052794636486, 5.7273153854304235],
         zoom: 13,
@@ -331,7 +331,7 @@ $('#button-1').on('click', function() {
     })
 })
 
-$('#button-2').on('click', function() {
+$('#button-2').on('click', function () {
     map.flyTo({
         center: [145.36498335315687, -18.233278090841523],
         zoom: 13,
@@ -339,7 +339,7 @@ $('#button-2').on('click', function() {
     })
 })
 
-$('#button-3').on('click', function() {
+$('#button-3').on('click', function () {
     map.flyTo({
         center: [37.83004632, 0.641029035],
         zoom: 13,
@@ -347,7 +347,7 @@ $('#button-3').on('click', function() {
     })
 })
 
-$('#button-4').on('click', function() {
+$('#button-4').on('click', function () {
     map.flyTo({
         center: [-140.1661321459181, -8.948080063918024],
         zoom: 13,
@@ -355,23 +355,26 @@ $('#button-4').on('click', function() {
     })
 })
 
-$('#button-5').on('click', function() {
+$('#button-5').on('click', function () {
     map.flyTo({
-        center: [99.87508, 6.4676],
+        center: [99.6684514533577, 6.7012891202407925],
         zoom: 13,
         pitch: 60
     })
 })
 
-$('#button-6').on('click', function() {
+$('#button-6').on('click', function () {
     map.flyTo({
         center: [-60.50317452288626, -3.091027433492709],
         zoom: 13,
         pitch: 60
-    })
+    });
+
+    map.rotateTo(45.0, { duration: 3000 });
+
 })
 
-$('#button-7').on('click', function() {
+$('#button-7').on('click', function () {
     map.flyTo({
         center: [-79.02277891382197, 8.571453546419367],
         zoom: 13,
@@ -379,7 +382,7 @@ $('#button-7').on('click', function() {
     })
 })
 
-$('#button-8').on('click', function() {
+$('#button-8').on('click', function () {
     map.flyTo({
         center: [-79.02277891382197, 8.571453546419367],
         zoom: 13,
@@ -387,15 +390,15 @@ $('#button-8').on('click', function() {
     })
 })
 
-$('#button-9').on('click', function() {
+$('#button-9').on('click', function () {
     map.flyTo({
-        center: [168.18304911103252, -17.65439723577704], 
+        center: [168.18304911103252, -17.65439723577704],
         zoom: 13,
         pitch: 60
     })
 })
 
-$('#button-10').on('click', function() {
+$('#button-10').on('click', function () {
     map.flyTo({
         center: [134.34127, 7.25032],
         zoom: 13,

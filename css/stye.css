@@ -50,7 +50,6 @@ button {
     justify-content: center;
     line-height: 20px;
     overflow: hidden;
-    padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
     border: 0;
@@ -64,4 +63,10 @@ button {
     vertical-align: middle;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+button:hover,
+button:focus {
+    background-color: #ff4d00;
+    color: antiquewhite;
 }
