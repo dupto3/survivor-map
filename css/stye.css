@@ -12,8 +12,9 @@ body {
 
 .sidebar {
     position: relative;
-    width: 41%;
-    margin: 10px;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: 10px;
     z-index: 10;
     font-family: 'Courier New', Courier, monospace;
     background-color: antiquewhite;
@@ -23,6 +24,8 @@ body {
 
 .title {
     font-weight: bold;
+    margin-bottom:8px;
+
 }
 
 .mapboxgl-popup-close-button {
@@ -37,20 +40,28 @@ body {
 }
 
 button {
-    display: block;
     position: relative;
-    width: 10%;
+    align-items: center;
+    z-index: 10;
+    cursor: pointer;
+    display: inline-flex;
+    width: 200px;
     height: 30px;
-    padding: 5px;
-    border: none;
+    justify-content: center;
+    line-height: 20px;
+    overflow: hidden;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 0;
     border-radius: 3px;
     font-size: 13px;
     text-align: center;
+    touch-action: manipulation;    
     font-family: 'Courier New', Courier, monospace;
     color: black;
     background: antiquewhite;
+    vertical-align: middle;
     margin-top: 10px;
     margin-left: 10px;
-    opacity: 50;
-    z-index: 10;
 }
