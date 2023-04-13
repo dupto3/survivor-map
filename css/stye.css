@@ -52,5 +52,5 @@ button {
     margin-top: 10px;
     margin-left: 10px;
     opacity: 50;
-    z-index: 1;
+    z-index: 10;
 }
