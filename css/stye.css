@@ -28,6 +28,10 @@ body {
 
 }
 
+.mapboxgl-marker {
+    cursor: pointer;
+}
+
 .mapboxgl-popup-close-button {
     display: none;
 }
